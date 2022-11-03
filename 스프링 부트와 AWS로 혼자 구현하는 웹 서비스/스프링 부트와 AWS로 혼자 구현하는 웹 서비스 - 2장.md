@@ -29,7 +29,7 @@
 
 ![IMG](https://velog.velcdn.com/images/kimtaekjun/post/ddb18848-adb4-4b68-9539-e06eb006bcb4/image.png)
 
-`@SpringBootApplication` : 스프링 부트의 자동 설정, 스프링 빈 읽기와 생성을 모두 자동으로 설정한다. 특히 **이 위치부터 읽어**가기 때문에 항상 **프로젝트의 최상단**에 위치해야만 한다.
+`@SpringBootApplication` : 스프링 부트의 자동 설정, 스프링 빈 읽기와 생성을 모두 자동으로 설정한다. 특히 **이 위치부터 읽어**가기 때문에 항상 **프로젝트의 최상단**에 위치해야만 한다.  
 `SpringApplication.run` : 별도로 외부에 WAS를 두지 않고 애플리케이션을 실행할 때 내부에서 WAS를 실행한다. 항상 서버에 **톰캣을 설치할 필요가 없게 되고**, 스프링 부트로 만들어진 Jar 파일로 실행된다.
 
 내장 WAS를 사용하는 이유는❓
@@ -39,19 +39,19 @@
 
 HelloController라는 컨트롤러를 생성하였다.
 
-`@RestController` : 컨트롤러를 JSON으로 반환할 수 있게 만들어준다.
+`@RestController` : 컨트롤러를 JSON으로 반환할 수 있게 만들어준다.  
 `@GetMapping` : HTTP Method인 Get의 요청을 받을 수 있는 API를 만들어 줍니다.
 
 ![IMG](https://velog.velcdn.com/images/kimtaekjun/post/ffa1f5a5-983e-4aeb-8aaf-a77cb41b99f1/image.png)
 
 HelloController 컨트롤러의 테스트 코드를 작성했다.
 
-`@RunWith(SpringRunner.class)` : 스프링 부트 테스트와 JUnit 사이에 연결자 역할을 합니다.
-`@WebMvcTest(controllers = HelloController.class)` : 여러 스프링 테스트 어노테이션 중, Spring Mvc에 집중할 수 있는 어노테이션입니다.
-`@Autowired` : 스프링이 관리하는 빈(Bean)을 주입 받습니다.
-`private MockMvc mockMvc` : 웹 API를 테스트할 때 사용하고, 스프링 MVC 테스트의 시작점입니다.
-`mockMvc.perform(get("/hello"))` : MockMvc를 통해 /hello 주소로 HTTP GET 요청을 합니다.
-`.andExpect(status().isOk())` : HTTP Header의 Status를 검증하고, 흔히 알고 있는 200, 404, 500 등의 상태를 검증합니다.
+`@RunWith(SpringRunner.class)` : 스프링 부트 테스트와 JUnit 사이에 연결자 역할을 합니다.  
+`@WebMvcTest(controllers = HelloController.class)` : 여러 스프링 테스트 어노테이션 중, Spring Mvc에 집중할 수 있는 어노테이션입니다.  
+`@Autowired` : 스프링이 관리하는 빈(Bean)을 주입 받습니다.  
+`private MockMvc mockMvc` : 웹 API를 테스트할 때 사용하고, 스프링 MVC 테스트의 시작점입니다.  
+`mockMvc.perform(get("/hello"))` : MockMvc를 통해 /hello 주소로 HTTP GET 요청을 합니다.  
+`.andExpect(status().isOk())` : HTTP Header의 Status를 검증하고, 흔히 알고 있는 200, 404, 500 등의 상태를 검증합니다.  
 `.andExpect(content().string(hello)` : 결과를 검증하고, Controller에서 "hello"를 리턴하기 때문에 이 값이 맞는지 검증합니다.
 
 > 계속 테스트할 때 Execution failed for task ':test'. 라는 에러가 떠, 구글링을 해본 결과
