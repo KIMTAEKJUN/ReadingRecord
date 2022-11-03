@@ -1,10 +1,10 @@
-package com.taekjun.book.springbootwebservice;
+package com.taekjun.book.springboot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringbootWebserviceApplicationTests {
+class ApplicationTests {
 
 	@Test
 	void contextLoads() {
