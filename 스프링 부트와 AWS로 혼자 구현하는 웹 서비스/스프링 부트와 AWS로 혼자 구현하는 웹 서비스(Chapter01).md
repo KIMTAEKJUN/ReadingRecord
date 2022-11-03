@@ -11,21 +11,22 @@
 
 실제로도 많은 IT 서비스 회사(네카라쿠베우 등등)에서는 **인텔리제이 얼티메이트(유료)를 공식 IDE**로 사용하고 있습니다.
 
-### 2. 프로젝트 생성하기
+### 2. 인텔리제이에서 프로젝트 생성하기
+#### 2-1. 프로젝트 생성
+> 보통 **스프링 이니셜라이저**(https://start.spring.io)를 통해서 진행할 수 있다. **스프링 이니셜라이저**를 사용하게 되면 **build.gradle** 의 코드가 어떠한 역할인지 **스프링 이니셜라이저** 외에 추가로 **의존성** 추가가 필요할 때 어떻게 해야 할지 등을 모르는 상태로 개발하는 경우가 있습니다.
+
 ![IMG](https://velog.velcdn.com/images/kimtaekjun/post/e746a05c-a097-40e9-8992-cfb93ce7c85d/image.png)
 
 위에서와 같이 **그룹Id**와 **아티팩트**를 등록합니다. 특히 **아티팩트**는 프로젝트의 이름이 되기 때문에 원하는 이름을 작성해 주면 됩니다.
 
-책에선 프로젝트 유형을 **그레이들(Gradle)**로 선택해 프로젝트를 생성합니다.
-저는 **Intellij Ultimate** 버전이라 편하게 **Spring Initializr**로 만들었습니다.
-> **Gradle**은 **build tool(빌드 도구)**이다.
-**build**: **컴파일, 테스트, 배포, 문서화** 등의 작업을 포함하는 절차를 의미
+책에선 프로젝트 유형을 **그레이들(Gradle)** 로 선택해 프로젝트를 생성합니다.
+저는 **인텔리제이 얼티메이트** 버전이라 편하게 **스프링 이니셜라이저**로 만들었습니다.
 
 ![IMG](https://velog.velcdn.com/images/kimtaekjun/post/ef94ae3d-8acb-4306-b30a-c9fb95b47126/image.png)
 
 이렇게 모든 설정이 끝나면 **그레이들(Gradle)** 기반의 자바 프로젝트가 생성됩니다.
 
-### build.gradle 설정
+#### 2-2. build.gradle 설정
 ```
 plugins {
 	id 'org.springframework.boot' version '2.7.5'
@@ -51,7 +52,7 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 ```
-저는 **Spring Initializr**로 프로젝트를 만들었기 때문에 또 다른 설정은 안하겠습니다.
+저는 **스프링 이니셜라이저r**로 프로젝트를 만들었기 때문에 또 다른 설정은 안하겠습니다.
 위 코드는 제가 설정한 **build.gradle** 코드이고, 밑 코드가 책에서 설정한 **build.gradle** 코드 입니다.
 <br>
 
@@ -89,21 +90,35 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 ```
-- buildscript : 프로젝트의 플러그인 의존성 관리 설정을 하는 곳
-    - ext : build.gradle에서 사용하는 전역변수를 설정
-    - dependencies : spring-boot-gradle-plugin라는 스프링 부트 그레이들 플러그인의 2.1.7.RELEASE를 의존성으로 받겠다는 의미
+- `buildscript` : 프로젝트의 플러그인 **의존성 관리** 설정을 하는 곳
+    - `ext` : **build.gradle**에서 사용하는 전역변수를 설정
+    - `dependencies` : spring-boot-gradle-plugin라는 스프링 부트 그레이들 플러그인의 2.1.7.RELEASE를 **의존성**으로 받겠다는 의미
 
-- plugin : 자바와 스프링 부트를 사용하기 위한 플러그인
-    - 컴파일이나 jar 파일 생성 등을 해주는 플러그인
 
-- repositories : 각종 의존성(라이브러리)들을 어떤 원격 저장소에서 받을 지 정함
+- `plugin` : **자바**와 **스프링 부트**를 사용하기 위한 플러그인
+    - **컴파일**이나 **jar 파일 생성** 등을 해주는 플러그인
+
+
+- `repositories` : 각종 **의존성(라이브러리)**들을 어떤 원격 저장소에서 받을 지 정함
     - 기본적으로 mavenGentral을 많이 사용하지만, 최근에는 **라이브러리 업로드 난이도** 때문에 jcenter도 많이 사용한다.
 
-- dependencies : 프로젝트 개발에 필요한 의존성들을 선언하는 곳
+
+- `dependencies` : 프로젝트 개발에 필요한 의존성들을 선언하는 곳
     - 의존성을 선언할 때 특정 버전을 명시하지 않아야 buildscript에 작성한 'org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}'의 버전을 따라가게 되므로 버전 관리가 한 곳에 집중되고, 버전 충돌 문제도 해결된다.
 
-    - dependency configuration: 선언된 의존성이 사용되는 특정범위
-        - Implementation: 구현할 때만 사용
-        - compileOnly: 컴파일할 때만 사용, 런타임시에는 X
-        - runtimeOnly: 런타임시에만 사용
-        - testImplementation: 테스트할 때만 사용
+    - `dependency configuration` : 선언된 의존성이 사용되는 특정범위
+        - `Implementation` : 구현할 때만 사용
+        - `compileOnly` : 컴파일할 때만 사용, 런타임시에는 X
+        - `runtimeOnly` : 런타임시에만 사용
+        - `testImplementation` : 테스트할 때만 사용
+
+### 3. 인텔리제이와 깃허브 연동
+> 프로젝트와 구인공고를 통해서, 버전 관리는 개발하면서 필수요소이다.
+실제로 대부분의 IT서비스 회사는 깃을 통해 버전 관리를 하고 있습니다.
+사실 깃 명령어가 더 익숙하지만, 책의 내용에 따라 인텔리제이를 통해서 연동을 시켜주겠습니다.
+
+![IMG](https://velog.velcdn.com/images/kimtaekjun/post/b9534900-04a2-4ffa-ab11-fa7c8a9f6b88/image.png)
+
+**Github에 프로젝트 공유**를 클릭하고 깃허브 저장소에 같은 이름으로 생성할 수 있다. 팝업창이 등장하고, **.idea** 디렉토리는 커밋하지 않습니다. 실행시 자동으로 생성되는 파일들이기 때문에 깃허브에 올리기에는 불필요 합니다.
+
+`.gitignore` : 깃에서 특정 파일 혹은 디렉토리를 관리 대상에서 제외할 때 사용하는 파일이다.
