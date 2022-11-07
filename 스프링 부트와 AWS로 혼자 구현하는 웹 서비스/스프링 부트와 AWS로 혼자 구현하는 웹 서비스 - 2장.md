@@ -35,16 +35,18 @@
 내장 WAS를 사용하는 이유는❓
 '**언제 어디서나 같은 환경에서 스프링 부트를 배포**'할 수 있기 때문이다. 외장 WAS를 쓴다고 하면 종류와 버전, 설정을 일치시켜야 하고, 새로운 서버를 추가하면 모든 서버에 같은 환경을 구축해야 하기 때문이다.
 
+#### 2-1. 컨트롤러 테스트
+
 ![IMG](https://velog.velcdn.com/images/kimtaekjun/post/a5ee187f-a3e4-4da2-8f7c-79a0d4bbc1ef/image.png)
 
-HelloController라는 컨트롤러를 생성하였다.
+HelloController이라는 클래스를 생성하였다.
 
 `@RestController` : 컨트롤러를 JSON으로 반환할 수 있게 만들어준다.  
 `@GetMapping` : HTTP Method인 Get의 요청을 받을 수 있는 API를 만들어 줍니다.
 
 ![IMG](https://velog.velcdn.com/images/kimtaekjun/post/ffa1f5a5-983e-4aeb-8aaf-a77cb41b99f1/image.png)
 
-HelloController 컨트롤러의 테스트 코드를 작성했다.
+HelloController의 테스트 코드를 작성했다.
 
 `@RunWith(SpringRunner.class)` : 스프링 부트 테스트와 JUnit 사이에 연결자 역할을 합니다.  
 `@WebMvcTest(controllers = HelloController.class)` : 여러 스프링 테스트 어노테이션 중, Spring Mvc에 집중할 수 있는 어노테이션입니다.  
@@ -57,4 +59,34 @@ HelloController 컨트롤러의 테스트 코드를 작성했다.
 > 계속 테스트할 때 Execution failed for task ':test'. 라는 에러가 떠, 구글링을 해본 결과
 Preferences 에서 빌드 도구 -> Gradle 항목에서 다음을 사용하여 빌드 및 실행, 다음을 사용하여 테스트 실행을 Gradle(디폴드)에서 IntelliJ IDEA로 변경하면 해결이 됩니다.
 
-#### 2-1. 롬복 소개 및 설치
+#### 2-2. 롬복 기능 테스트
+![IMG](https://velog.velcdn.com/images/kimtaekjun/post/31e8d8f5-ce46-4a4e-8528-6ac1c8d1694f/image.png)
+
+HelloResponseDto라는 클래스를 생성하였다.
+
+`@Getter` : 선언된 모든 필드의 get 메소드를 생성해 줍니다.  
+`@RequiredArgsConstructor` : 선언된 모든 final 필드가 포함된 생성자를 생성해 줍니다.
+
+![IMG](https://velog.velcdn.com/images/kimtaekjun/post/48a76da9-4e21-4635-acd3-57de4ee83e56/image.png)
+
+HelloResponseDto의 테스트 코드를 작성했다.
+
+`assertThat` : assertj라는 테스트 검증 라이브러리의 검증 메소드이고, 검증하고 싶은 대상을 메소드 인자로 받는다.  
+`isEqualTo` : assertj의 동등 비교 메소드이고, assertThat에 있는 값과 isEqualTo의 값을 비교해서 같을 때만 성공입니다.
+
+`JUnit`의 `assertThat()`보다 `assertj`의 `assertThat()`이 더 좋은 이유❓
+- assertj는 JUnit과 다르게 추가적인 라이브러리가 필요하지 않다.
+- 자동완성이 좀 더 확실하게 지원된다.
+
+![IMG](https://velog.velcdn.com/images/kimtaekjun/post/c010770f-d7f7-4729-a5b0-7b29187b70f2/image.png)
+
+HelloController에도 새로 만든 ResponseDto를 사용하기 위해 코드를 추가했다.
+
+`@RequestParam` : 외부에서 API로 넘긴 파라미터를 가져오는 어노테이션입니다.
+
+![IMG](https://velog.velcdn.com/images/kimtaekjun/post/56efb668-cf81-4fb8-bce1-bf4269e27368/image.png)
+
+HelloControllerTest에 테스트 코드를 추가했다.
+
+`param` : API 테스트할 때 사용될 요청 파라미터를 설정하고, 값은 String만 허용하기 때문에 숫자/날짜 등의 데이터도 등록할 때 문자열로 변경해야만 가능하다.
+`jsonPath` : JSON 응답값을 필드별로 검증할 수 있고, $를 기준으로 필드명을 명시한다. $ root를 명시하고 .을 통해 원하는 필드명을 검증할 수 있다.
