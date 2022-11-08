@@ -47,12 +47,12 @@
 #### 2-3. Posts domain 생성
 ![IMG](https://velog.velcdn.com/images/kimtaekjun/post/33dd6f4d-44c2-4ecd-82af-8ae5fddc8b13/image.png)
 
-`@Entity` : 테이블과 링크될 클래스임을 나타내고, 클래스의 이름을 테이블 이름으로 매칭합니다.
-`@Id` : 해당 테이블의 PK 필드를 나타냅니다.
-`@GeneratedValue` : PK의 생성 규칙을 나타내고, 스프링 부트 2.0 에서는 GenerationType.IDENTITY 옵션을 추가해야만 auto_increment가 됩니다.
-`@Column` : 테이블의 칼럼을 나타내며 굳이 선언하지 않더라도 해당 클래스의 필드는 모두 칼럼이 되고, 기본값 외에 추가로 변경이 필요한 옵션이 있으면 사용한다.
-`@NoArgsConstructor` : 기본 생성자 자동 추가, public Posts() {}와 같은 효과
-`@Getter` : 클래스 내 모든 필드의 Getter 메소드를 자동생성
+`@Entity` : 테이블과 링크될 클래스임을 나타내고, 클래스의 이름을 테이블 이름으로 매칭합니다.  
+`@Id` : 해당 테이블의 PK 필드를 나타냅니다.  
+`@GeneratedValue` : PK의 생성 규칙을 나타내고, 스프링 부트 2.0 에서는 GenerationType.IDENTITY 옵션을 추가해야만 auto_increment가 됩니다.  
+`@Column` : 테이블의 칼럼을 나타내며 굳이 선언하지 않더라도 해당 클래스의 필드는 모두 칼럼이 되고, 기본값 외에 추가로 변경이 필요한 옵션이 있으면 사용한다.  
+`@NoArgsConstructor` : 기본 생성자 자동 추가, public Posts() {}와 같은 효과  
+`@Getter` : 클래스 내 모든 필드의 Getter 메소드를 자동생성  
 `@Builder` : 해당 클래스의 빌더 패턴 클래스를 생성, 생상자 상단에 선언 시 생성자에 포함된 필드만 빌더에 포함
 
 Posts 클래스에 `@Setter`가 없는 이유 ❓
