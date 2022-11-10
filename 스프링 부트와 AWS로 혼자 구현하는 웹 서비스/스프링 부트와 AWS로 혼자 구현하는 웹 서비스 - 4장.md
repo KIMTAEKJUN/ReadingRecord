@@ -45,7 +45,7 @@
 ### 3. 게시글 등록 화면 만들기
 HTML과 부트스트랩 관련한것들은 생략하겠습니다~~~  
 index, header, footer.mustache 추가, 수정이 끝나면 컨트롤러도 수정을 합니다.  
-페이지에 관련된 컨트롤러는 모두 IndexController를 사용합니다.
+페이지에 관련된 컨트롤러는 모두 IndexController를 사용합니다.  
 ![IMG](https://velog.velcdn.com/images/kimtaekjun/post/20fa46ee-25e1-4db1-bde3-e5119329980a/image.png)
 
 /posts/save를 호출하면 posts-save.mustache를 호출하는 메소드를 추가하였다.
