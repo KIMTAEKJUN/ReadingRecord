@@ -34,8 +34,9 @@
 위에서 말한 위치에다가 첫 페이지를 담당할 **index.mustache**를 생성한다.
 ![IMG](https://velog.velcdn.com/images/kimtaekjun/post/a947a773-fc53-44b1-8051-68fab3e8a9d9/image.png)
 
-이 머스테치에 URL을 매핑하기 위해 IndexController를 생성해 준다.
 ![IMG](https://velog.velcdn.com/images/kimtaekjun/post/bd1d5db0-b723-4c12-8a5f-fef5d4d135bf/image.png)
+
+이 머스테치에 URL을 매핑하기 위해 IndexController를 생성해 준다.
 
 머스테치 스타터 덕분에 컨트롤러에서 문자열을 반환할 때 **앞의 경로와 뒤의 파일 확장자는 자동**으로 지정됩니다.
 
@@ -47,7 +48,7 @@ index, header, footer.mustache 추가, 수정이 끝나면 컨트롤러도 수�
 페이지에 관련된 컨트롤러는 모두 IndexController를 사용합니다.
 ![IMG](https://velog.velcdn.com/images/kimtaekjun/post/20fa46ee-25e1-4db1-bde3-e5119329980a/image.png)
 
-/posts/save를 호출하면 posts-save.mustache를 호출하는 메소드를 추가하였다.  
+/posts/save를 호출하면 posts-save.mustache를 호출하는 메소드를 추가하였다.
 이제 posts-save.mustache 파일 생성합니다.
 ![IMG](https://velog.velcdn.com/images/kimtaekjun/post/d8e5c062-1b21-4bab-8db4-fdfd4e918b0f/image.png)
 
