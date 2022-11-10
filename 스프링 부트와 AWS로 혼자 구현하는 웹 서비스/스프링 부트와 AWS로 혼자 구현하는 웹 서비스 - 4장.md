@@ -52,7 +52,8 @@ index, header, footer.mustache 추가, 수정이 끝나면 컨트롤러도 수�
 이제 posts-save.mustache 파일 생성합니다.
 ![IMG](https://velog.velcdn.com/images/kimtaekjun/post/d8e5c062-1b21-4bab-8db4-fdfd4e918b0f/image.png)
 
-하지만, 게시글 등록 화면에 **등록 버튼은 기능이 없습니다**. API를 호출하는 JS가 전혀 없기 때문입니다. 그래서 src/main/resources에 static/js/app 디렉토리를 생성하고, index.js를 만든다.
+하지만, 게시글 등록 화면에 **등록 버튼은 기능이 없습니다**. API를 호출하는 JS가 전혀 없기 때문입니다.  
+그래서 src/main/resources에 static/js/app 디렉토리를 생성하고, index.js를 만든다.
 ![IMG](https://velog.velcdn.com/images/kimtaekjun/post/dd1f6d4b-5a66-48a3-9b31-4770e9651b12/image.png)
 
 `var main = {~}` : main이라는 변수의 속성으로 function을 추가한 이유는 ❓
