@@ -212,3 +212,9 @@ BaseTimeEntity 클래스는 모든 Entity의 상위 클래스가 되어 **Entity
 
 마지막으로 JPA Auditing 어노테이션들을 모두 활성화할 수 있도록 Application 클래스에 활성화 어노테이션 하나를 추가하겠습니다.
 ![IMG](https://velog.velcdn.com/images/kimtaekjun/post/e0a22327-1b71-4566-adbe-966e52c6a050/image.png)
+
+### 이번 장에서는 뭘 배웠나 ❓
+- JPA / Hibernate / Spring Data JPA의 관계
+- Spring Data JPA를 이용하여 관계형 데이터베이스를 객체지향적으로 관리하는 방법
+- JPA의 더티 체킹을 이용하면 Update 쿼리 없이 테이블 수정이 가능하다는 것
+- JPA Auditing을 이용하여 등록/수정 시간을 자동화하는 방법
