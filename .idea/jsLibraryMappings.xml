@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="file://$PROJECT_DIR$/스프링 부트와 AWS로 혼자 구현하는 웹 서비스/springboot-webservice/src/main" libraries="{bootstrap, jquery-3.3.1}" />
+  </component>
+</project>
